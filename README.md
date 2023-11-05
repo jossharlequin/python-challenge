@@ -76,6 +76,8 @@ with open(BankData, newline='') as infile:
     header = next(csv_reader)
 
     # make variables
+Previous_Revenue code came from here: https://stackoverflow.com/questions/53474110/python-determine-change-in-value-from-one-period-to-the-next
+The first one starts the Previous_Revenue at 0
     previous_revenue = 0
     greatest_increase = 0
     greatest_decrease = 0
@@ -91,6 +93,8 @@ with open(BankData, newline='') as infile:
             profits_losses.append(change)
             months.append(month)
 
+This part looks at the change variable. It stores the change in greatest_increase, and visa versa, if the change is larger than the current greatest, that variable is updated and the month is stored. If not, it just passes through.
+This youtube video had code help: https://www.youtube.com/watch?v=uN5EeC2ClEc
             if change > greatest_increase:
                 greatest_increase = change
                 greatest_increase_date = month
@@ -98,7 +102,9 @@ with open(BankData, newline='') as infile:
                 greatest_decrease = change
                 greatest_decrease_date = month
 
+This Total_Revenue takes the value of the revenue and adds it to the revenue amount it has in the next loop.
         total_revenue += revenue
+The Previous_Revenue takes on the current revenue amount and holds it for the next loop.
         previous_revenue = revenue
 
 # Calculate the average change
